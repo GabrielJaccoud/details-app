@@ -1,0 +1,45 @@
+# Ignorar arquivos de cache e temporários
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Ignorar diretórios de ambiente virtual
+virtualenv/
+virtualenvs/
+venv/
+env/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de banco de dados
+*.sqlite3
+*.db
+
+# Ignorar arquivos de configuração sensíveis
+.env
+.flaskenv
+
+# Ignorar arquivos de IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar dependências do Node.js
+node_modules/
+
+# Ignorar builds do React/Vite
+build/
+dist/
+
+# Ignorar arquivos de Docker
+*.swp
+*.bak
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+
