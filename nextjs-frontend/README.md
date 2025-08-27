@@ -97,3 +97,8 @@ npm test
 ## Licença
 
 Este projeto está licenciado sob a licença MIT.
+
+
+
+Este é um teste de CI/CD para o projeto Details App.
+
