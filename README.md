@@ -44,3 +44,40 @@ Detalhes sobre como instalar e executar o projeto serão adicionados aqui em bre
 
 Informações sobre como contribuir para o projeto serão adicionadas em `CONTRIBUTING.md`.
 
+
+
+## 🚧 Problemas Comuns no GitHub e Soluções
+
+### Docker Compose não disponível no ambiente sandbox
+
+**Sintoma**: `Cannot connect to the Docker daemon` ou limitações de ambiente
+
+**Solução Automática**:
+```bash
+# Scripts adaptativos detectam o ambiente e configuram automaticamente
+python backend/scripts/check_environment.py
+python backend/scripts/init_database.py
+python backend/scripts/run_app.py
+```
+
+### Estratégia de Fallback:
+- **Desenvolvimento**: SQLite local (`details_local.db`)
+- **GitHub**: SQLite em memória ou arquivo local
+- **Produção**: PostgreSQL via Docker/externo
+
+### Comandos Úteis:
+```bash
+# Verificar ambiente
+python backend/scripts/check_environment.py
+
+# Criar tabelas manualmente
+python backend/scripts/init_database.py
+
+# Iniciar aplicação com configuração adaptativa
+python backend/scripts/run_app.py
+
+# Gerar migrações offline (quando Docker disponível)
+alembic revision --autogenerate -m "migracao"
+```
+
+
