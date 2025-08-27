@@ -81,3 +81,37 @@ alembic revision --autogenerate -m "migracao"
 ```
 
 
+
+
+## 🚀 Acesso ao Frontend
+
+Frontend disponível em: https://5173-i83ezger1yrrrpsdax61j-e54c7ca7.manusvm.computer
+
+### Problemas Comuns e Soluções
+
+**Host Bloqueado**: Configuração de `allowedHosts` no `vite.config.js` resolve o problema.
+
+### Scripts Disponíveis:
+- `pnpm run dev` - Desenvolvimento local
+- `pnpm run dev:host` - Desenvolvimento com acesso externo
+
+
+
+
+## 🌐 Comunicação Frontend-Backend
+
+### Configuração de API:
+- Variável de ambiente: `VITE_API_URL` (não utilizada diretamente no código atual, mas pode ser configurada no `.env`)
+- Padrão: `http://localhost:8000` (acessado diretamente no `mockData.js`)
+
+### Problemas Comuns:
+- **Failed to fetch**: Verificar CORS e conectividade
+- **CORS Error**: Configurar origins no backend (`backend/app/main.py`)
+
+### Debug:
+```bash
+# Testar API do backend
+curl http://localhost:8000/editais/
+```
+
+
