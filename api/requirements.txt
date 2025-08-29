@@ -13,3 +13,8 @@ celery==5.4.0
 email-validator==2.1.1
 
 
+
+
+vercel-python==0.0.3
+
+

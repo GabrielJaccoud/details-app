@@ -1,0 +1,35 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",\n  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "builds": [
+    {
+      "src": "nextjs-frontend/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "skipBuildSteps": ["lint", "typecheck"]
+      }
+    },
+    {
+      "src": "api/app/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/app/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/nextjs-frontend/$1"
+    }
+  ]
+}
+
+
