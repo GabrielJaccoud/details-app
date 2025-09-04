@@ -19,7 +19,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-const API_BASE_URL = 'https://details-app-yozf.vercel.app/api';
+const API_BASE_URL = 'https://details-5o82cmva8-gabriel-jaccouds-projects.vercel.app/api';
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
