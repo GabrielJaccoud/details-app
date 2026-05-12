@@ -129,3 +129,25 @@ export const formSubmissions = mysqlTable("form_submissions", {
 
 export type FormSubmission = typeof formSubmissions.$inferSelect;
 export type InsertFormSubmission = typeof formSubmissions.$inferInsert;
+
+export const userProfiles = mysqlTable("user_profiles", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  fullName: varchar("fullName", { length: 255 }),
+  cpf: varchar("cpf", { length: 20 }),
+  email: varchar("email", { length: 320 }),
+  phone: varchar("phone", { length: 20 }),
+  address: text("address"),
+  city: varchar("city", { length: 100 }),
+  state: varchar("state", { length: 2 }),
+  zipCode: varchar("zipCode", { length: 10 }),
+  organization: varchar("organization", { length: 255 }),
+  position: varchar("position", { length: 255 }),
+  bio: text("bio"),
+  profileData: json("profileData"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type UserProfile = typeof userProfiles.$inferSelect;
+export type InsertUserProfile = typeof userProfiles.$inferInsert;

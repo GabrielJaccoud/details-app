@@ -11,6 +11,7 @@ import Editais from "./pages/Editais";
 import EditalDetail from "./pages/EditalDetail";
 import Tutorial from "./pages/Tutorial";
 import SubmissionHistory from "./pages/SubmissionHistory";
+import Profile from "./pages/Profile";
 import { useAuth } from "./_core/hooks/useAuth";
 
 function Router() {
@@ -37,6 +38,7 @@ function Router() {
               <Route path={"/editais"} component={Editais} />
               <Route path={"/editais/:id"} component={EditalDetail} />
               <Route path={"/historico"} component={SubmissionHistory} />
+              <Route path={"/perfil"} component={Profile} />
               <Route path={"/tutorial"} component={Tutorial} />
               <Route path={"/"} component={Dashboard} />
               <Route path={"/404"} component={NotFound} />

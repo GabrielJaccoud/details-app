@@ -159,5 +159,15 @@
 - [x] Criar painel de gráficos no dashboard
 - [x] Implementar salvamento automático durante edição
 - [x] Adicionar botões de desfazer/refazer
-- [ ] Integrar com repositório GitHub Details
+- [x] Integrar com repositório GitHub Details
 - [x] Criar testes para novas funcionalidades
+
+
+## Perfil do Usuário e Otimizações - Sprint 9
+- [x] Criar página de perfil com informações pessoais padrão
+- [ ] Implementar auto-preenchimento de formulários com dados do perfil
+- [ ] Adicionar animações suaves e skeleton screens no dashboard
+- [ ] Implementar exportação em lote de PDFs
+- [ ] Criar skill reutilizável com skill-creator
+- [ ] Enviar todos os arquivos para GitHub Details
+- [ ] Criar documentação completa do projeto
