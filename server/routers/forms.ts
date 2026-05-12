@@ -380,4 +380,62 @@ export const formsRouter = router({
         });
       }
     }),
+
+  // Exportar múltiplos formulários em lote
+  batchExportPDFs: protectedProcedure
+    .input(
+      z.object({
+        submissionIds: z.array(z.number()),
+        format: z.enum(["zip", "individual"]).default("zip"),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      try {
+        if (input.submissionIds.length === 0) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Nenhum formulário selecionado",
+          });
+        }
+
+        // Verificar se todos os formulários pertencem ao usuário
+        const submissions = await Promise.all(
+          input.submissionIds.map((id) => getFormSubmission(id, ctx.user.id))
+        );
+
+        const validSubmissions = submissions.filter((s) => s !== null);
+        if (validSubmissions.length === 0) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Nenhum formulário encontrado",
+          });
+        }
+
+        // Gerar URLs de download para cada PDF
+        const downloadUrls = validSubmissions.map((sub) => ({
+          id: sub.id,
+          fileName: `formulario-${sub.id}.pdf`,
+          url: `/api/forms/download/${sub.id}`,
+        }));
+
+        // Retornar URL de download do ZIP
+        const zipFileName = `formularios-${new Date().toISOString().split("T")[0]}.zip`;
+        const downloadUrl = `/api/forms/download-batch?ids=${input.submissionIds.join(",")}`;
+
+        return {
+          success: true,
+          downloadUrl,
+          fileName: zipFileName,
+          count: validSubmissions.length,
+          files: downloadUrls,
+        };
+      } catch (error) {
+        if (error instanceof TRPCError) throw error;
+        console.error("Batch export error:", error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Erro ao exportar formulários em lote",
+        });
+      }
+    }),
 });

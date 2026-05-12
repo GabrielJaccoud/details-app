@@ -165,9 +165,9 @@
 
 ## Perfil do Usuário e Otimizações - Sprint 9
 - [x] Criar página de perfil com informações pessoais padrão
-- [ ] Implementar auto-preenchimento de formulários com dados do perfil
+- [x] Implementar auto-preenchimento de formulários com dados do perfil
 - [ ] Adicionar animações suaves e skeleton screens no dashboard
 - [ ] Implementar exportação em lote de PDFs
-- [ ] Criar skill reutilizável com skill-creator
-- [ ] Enviar todos os arquivos para GitHub Details
-- [ ] Criar documentação completa do projeto
+- [x] Criar skill reutilizável com skill-creator
+- [x] Enviar todos os arquivos para GitHub Details
+- [x] Criar documentação completa do projeto
